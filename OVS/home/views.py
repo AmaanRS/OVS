@@ -18,7 +18,7 @@ def SignUp(request):
         username=request.POST['Username']
         password=request.POST['Password']
         param={'usrname':username,'password':password}
-        if User.objects.filter(username=username) is None:
+        if User.objects.filter(username=username) is not None:
             myuser=User.objects.create_user(username=username,password=password)
             myuser.save()
             messages.success(request,'Your Account has been successfully created you can Login now ')
